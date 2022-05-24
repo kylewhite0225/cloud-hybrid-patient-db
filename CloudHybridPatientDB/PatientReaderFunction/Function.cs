@@ -2,6 +2,10 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3;
 using Amazon.S3.Util;
+using Amazon.SQS;
+using System.Text;
+using System.Text.Json;
+using System.Xml.Serialization;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -41,15 +45,65 @@ public class Function
     public async Task<string?> FunctionHandler(S3Event evnt, ILambdaContext context)
     {
         var s3Event = evnt.Records?[0].S3;
-        if(s3Event == null)
+        if (s3Event == null)
         {
-            return null;
+            throw new Exception("Event is null");
         }
+
+        string bucketName = s3Event.Bucket.Name;
+        string objectKey = s3Event.Object.Key;
+
+        Console.WriteLine("Bucket and object key: {0}, {1}", bucketName, objectKey);
 
         try
         {
-            var response = await this.S3Client.GetObjectMetadataAsync(s3Event.Bucket.Name, s3Event.Object.Key);
-            return response.Headers.ContentType;
+            // Create stream to get object from S3
+            Console.WriteLine("Create stream object with GetObjectStreamAsync");
+            Stream stream = await S3Client.GetObjectStreamAsync(bucketName, objectKey, null);
+            Console.WriteLine("Created stream.");
+
+            // Create jsonString string which will contain the contents of the file itself
+            string fileContent;
+
+            Console.WriteLine("Use StreamReader");
+            // Using StreamReader and the previously created stream
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                // Populate the jsonString string
+                fileContent = reader.ReadToEnd();
+                // Close reader
+                reader.Close();
+            }
+
+            Console.WriteLine("Stream reader completed populating file content.");
+
+            // Parse the patient xml file.
+            XmlRootAttribute xRoot = new XmlRootAttribute();
+            xRoot.ElementName = "patient";
+            xRoot.IsNullable = true;
+            XmlSerializer serializer = new XmlSerializer(typeof(Patient), xRoot);
+            var parsed = serializer.Deserialize(new MemoryStream(ASCIIEncoding.UTF8.GetBytes(fileContent)));
+            Patient patient = (Patient)parsed;
+
+            if (patient == null)
+            {
+                throw new Exception("Failed to parse patient xml.");
+            }
+
+            Console.WriteLine("Successfully parsed patient xml.");
+
+            Console.WriteLine("Serializing into json message.");
+            string jsonMessage = JsonSerializer.Serialize<Patient>(patient);
+
+            //Console.WriteLine("Attempting to send json message to queue");
+            //var sqsClient = new AmazonSQSClient();
+            //sqsClient.SendMessageAsync(
+            //    "https://sqs.us-east-1.amazonaws.com/926831757693/downwardQueue",
+            //    jsonMessage).Wait();
+
+            //Console.WriteLine("Successfully sent message to queue.");
+
+            return jsonMessage;
         }
         catch(Exception e)
         {

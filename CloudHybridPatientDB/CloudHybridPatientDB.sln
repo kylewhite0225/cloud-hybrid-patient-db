@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientUploader", "PatientUploader\PatientUploader.csproj", "{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientReaderFunction", "PatientReaderFunction\PatientReaderFunction.csproj", "{8E942ED8-C543-4033-82C6-94DE13716C1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E942ED8-C543-4033-82C6-94DE13716C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E942ED8-C543-4033-82C6-94DE13716C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E942ED8-C543-4033-82C6-94DE13716C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E942ED8-C543-4033-82C6-94DE13716C1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
