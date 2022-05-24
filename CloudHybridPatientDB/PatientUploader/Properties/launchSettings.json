@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PatientUploader": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientsFiles\\patient1.xml\""
+    }
+  }
+}

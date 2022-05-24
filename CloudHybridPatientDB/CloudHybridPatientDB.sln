@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32421.90
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientUploader", "PatientUploader.csproj", "{A8904644-57A1-4323-8FC3-D9B4A5F75D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientUploader", "PatientUploader\PatientUploader.csproj", "{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8904644-57A1-4323-8FC3-D9B4A5F75D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8904644-57A1-4323-8FC3-D9B4A5F75D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8904644-57A1-4323-8FC3-D9B4A5F75D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8904644-57A1-4323-8FC3-D9B4A5F75D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C38D79-C26F-48A3-BD13-26D0AC33B75B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
