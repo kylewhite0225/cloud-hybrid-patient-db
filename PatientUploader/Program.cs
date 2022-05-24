@@ -47,10 +47,8 @@ public class PatientUploader
             throw new ArgumentException("File type must be xml.");
         }
         
-        // TODO
-        // Update bucket to desired bucket for this project
         // If the arguments pass checks, use UploadFile method
-        UploadFile(path, "vaccine-bucket").Wait();
+        UploadFile(path, "patientfilesbucket").Wait();
         Console.WriteLine("Done.");
     }
 

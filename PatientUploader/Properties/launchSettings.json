@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "S3VaxUploader": {
+    "PatientUploader": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 1\\TestFiles\\site2_pfizerOnly.xml\" xml"
+      "commandLineArgs": "\"C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientsFiles\\patient1.xml\""
     }
   }
 }
