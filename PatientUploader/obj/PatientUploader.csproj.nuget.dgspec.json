@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\S3VaxUploader.csproj": {}
+    "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\PatientUploader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\S3VaxUploader.csproj": {
+    "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\PatientUploader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\S3VaxUploader.csproj",
-        "projectName": "S3VaxUploader",
-        "projectPath": "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\S3VaxUploader.csproj",
+        "projectUniqueName": "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\PatientUploader.csproj",
+        "projectName": "PatientUploader",
+        "projectPath": "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\PatientUploader.csproj",
         "packagesPath": "C:\\Users\\Kylew\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Kylew\\Dropbox\\CS455 - Cloud Computing\\Projects\\Project 2\\cloud-hybrid-patient-db\\PatientUploader\\obj\\",
         "projectStyle": "PackageReference",

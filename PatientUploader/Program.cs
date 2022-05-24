@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace S3VaxUploader;
+namespace PatientUploader;
 using System;
 using System.IO;
 using Amazon;
@@ -10,15 +10,16 @@ using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 
 
-public class S3VaxUploader
+public class PatientUploader
 {
     static void Main(string[] args)
     {
+        // NO LONGER NEEDED
         // Check if the input arguments array contains the proper number of arguments
-        if (args.Length != 2)
-        {
-            throw new ArgumentException("Required arguments: file-path data-type");
-        }
+        // if (args.Length != 2)
+        // {
+        //     throw new ArgumentException("Required arguments: file-path data-type");
+        // }
 
         // Capture path from args array
         string path = @args[0];
@@ -31,20 +32,26 @@ public class S3VaxUploader
             throw new FileNotFoundException("File does not exist.");
         }
 
+
+        // NO LONGER NEEDED
         // Capture file type from args array
-        string type = args[1];
-        
-        // Check if it matches the two accepted filetypes.
-        if (!String.Equals(type, "xml") && !String.Equals(type, "json"))
+        // string type = args[1];
+
+        // Split the path on '.' to get the filetype extension.
+        string[] type = path.Split('.');
+
+        // Check if it matches the two accepted filetype (xml).
+        if (!String.Equals(type[1], "xml"))
         {
             // Throw an exception if it does not match.
-            throw new ArgumentException("Type must be equal to 'xml' or 'json'");
-            // Console.WriteLine("Type must be equal to 'xml' or 'json'");
+            throw new ArgumentException("File type must be xml.");
         }
-
+        
+        // TODO
+        // Update bucket to desired bucket for this project
         // If the arguments pass checks, use UploadFile method
-        UploadFile(path, "vaccine-bucket", "test-file", type).Wait();
-        Console.WriteLine("File uploading completed.");
+        UploadFile(path, "vaccine-bucket").Wait();
+        Console.WriteLine("Done.");
     }
 
     /// <summary>
@@ -71,7 +78,7 @@ public class S3VaxUploader
         return AWSCredentialsFactory.GetAWSCredentials(profile, new SharedCredentialsFile());
     }
 
-    private static async Task UploadFile(string filePath, string bucketName, string keyName, string type)
+    private static async Task UploadFile(string filePath, string bucketName)
     {
         
         // If the arguments pass checks, create credentials file and S3Client objects
@@ -84,13 +91,11 @@ public class S3VaxUploader
             PutObjectRequest putRequest = new PutObjectRequest
             {
                 BucketName = bucketName,
-                //Key = keyName,
                 FilePath = filePath,
-                ContentType = "text/" + type
             };
 
             PutObjectResponse response = await s3Client.PutObjectAsync(putRequest);
-            Console.WriteLine("File Uploaded.");
+            Console.WriteLine("File uploading completed.");
 
             s3Client.Dispose();
             // return Task.CompletedTask;
