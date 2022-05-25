@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatientReaderFunction
+namespace InsuranceDataService
 {
-    public class Patient
+    public class PatientInsurance
     {
         public int id { get; set; }
 
-        public string? name { get; set; }
+        public string provider { get; set; }
+
+        public string policy { get; set; }
     }
 }

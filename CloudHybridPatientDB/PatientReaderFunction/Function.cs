@@ -84,6 +84,7 @@ public class Function
             XmlSerializer serializer = new XmlSerializer(typeof(Patient), xRoot);
             var parsed = serializer.Deserialize(new MemoryStream(ASCIIEncoding.UTF8.GetBytes(fileContent)));
             Patient patient = (Patient)parsed;
+            Console.WriteLine(patient.id + " " + patient.name);
 
             if (patient == null)
             {
@@ -95,13 +96,14 @@ public class Function
             Console.WriteLine("Serializing into json message.");
             string jsonMessage = JsonSerializer.Serialize<Patient>(patient);
 
-            //Console.WriteLine("Attempting to send json message to queue");
-            //var sqsClient = new AmazonSQSClient();
-            //sqsClient.SendMessageAsync(
-            //    "https://sqs.us-east-1.amazonaws.com/926831757693/downwardQueue",
-            //    jsonMessage).Wait();
+            Console.WriteLine(jsonMessage);
+            Console.WriteLine("Attempting to send json message to queue");
+            var sqsClient = new AmazonSQSClient();
+            sqsClient.SendMessageAsync(
+                "https://sqs.us-east-1.amazonaws.com/926831757693/downwardQueue",
+                jsonMessage).Wait();
 
-            //Console.WriteLine("Successfully sent message to queue.");
+            Console.WriteLine("Successfully sent message to queue.");
 
             return jsonMessage;
         }

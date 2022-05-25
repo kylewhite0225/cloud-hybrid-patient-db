@@ -19,8 +19,8 @@
     "package-type"         : "Zip",
     "function-role"        : "arn:aws:iam::926831757693:role/LabRole",
     "function-architecture" : "x86_64",
-    "function-subnets"      : "subnet-0e26438bb4d21f7fb,subnet-05633bca17545cca8,subnet-0e563df1344a6d8d3,subnet-015e6a2f36acfc697,subnet-0c6b189a5b9d46c58,subnet-071e62dcec0847647",
-    "function-security-groups" : "sg-0e28daa4d7d444fcc",
+    "function-subnets"      : "",
+    "function-security-groups" : "",
     "tracing-mode"             : "PassThrough",
     "environment-variables"    : "",
     "image-tag"                : ""
