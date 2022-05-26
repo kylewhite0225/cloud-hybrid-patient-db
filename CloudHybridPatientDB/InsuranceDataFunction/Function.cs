@@ -4,6 +4,8 @@ using System.Data;
 using System.Text.Json;
 using System.IO;
 using System.Text;
+using Amazon.SQS;
+using Amazon.Runtime;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -39,9 +41,12 @@ public class Function
             throw new Exception("Event is null.");
         }
 
+        AmazonSQSClient sqsClient = new AmazonSQSClient(GetAwsCredentials(), Amazon.RegionEndpoint.USEast1);
+        await sqsClient.DeleteMessageAsync("https://sqs.us-east-1.amazonaws.com/926831757693/upwardQueue", evnt.Records[0].ReceiptHandle);
+
         InsuranceData data = ParseJson(s3Event);
 
-        if (data.provider == "" && data.policy == "")
+        if (string.IsNullOrEmpty(data.provider) && string.IsNullOrEmpty(data.policy))
         {
             Console.WriteLine("Patient with ID {0} does not have medical insurance.", data.id);
         } else
@@ -84,6 +89,14 @@ public class Function
         }
 
         return data;
+    }
+
+    private static SessionAWSCredentials GetAwsCredentials()
+    {
+        return new SessionAWSCredentials(
+            "ASIA5PS32JF66C5FU5PG",
+            "M2pi4ntusI6/VeQDPba4eYs48dfz0ibhKWfyTdn6",
+            "FwoGZXIvYXdzEMf//////////wEaDCCmAyJY6tFETOLeiiLFAUqcnggUUwfYkD14FNqywQOQ1VRupNrFD8jiwcGcs5gpHlcVfpZra+mhtN15L3WJ2LJpAJ2jheQO2e2CoyFuPfd8c/T8+f/eoNJyDfcWadY285mtcQ+EdIVpTT11swGdtKlK2cxlZhig17dGaE8arogQSP8Df9EDXUbxzEk/1SHq7hSWThv00aWwgS2OI/QCqG/M0PQsYXdsbXJL6C7JHTPvK91dsOMW51QonuGjn2P4Qpybg/VJ9XE9X316qOscVDMEvNBCKM+nvJQGMi2dqO2iuT/rWHWZmdFtcdM5MS4x7GqmIxO44WPspB2z5UWuMDNHytz21NnLIbw=");
     }
 
     // private async Task ProcessMessageAsync(SQSEvent.SQSMessage message, ILambdaContext context)

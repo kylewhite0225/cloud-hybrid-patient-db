@@ -122,9 +122,9 @@ namespace InsuranceDataService
         private static SessionAWSCredentials GetAwsCredentials()
         {
             return new SessionAWSCredentials(
-                "ASIA5PS32JF6YA2ZASU3", 
-                "JcXXikWbDDwqMeOmUHTqELL03+t/FEOPR6befz6b", 
-                "FwoGZXIvYXdzEKz//////////wEaDPflgAirQRKO17VFliLFAZRngVQYeybYvokojO6XI08g1hnU3FO7rw/B/Cbli+pRX9I8tzKGJFCKaEesxLSliAX/enQgEEladAcMoFtpatCLWbsfo5t0ugdMgdKodUMMLfxnTQMp5XNg2WTf0nlhqtn6TZeuopV6OLHubTmUcnjEU6HUehMYkSKdtZjF+48Jryokr9p+ty1/7XOk6QvZhSAjI/r+ygltyzClsNR2mj+yk1o18EZ+a6rOsApTAqphDjixtKon9EU0I26RomVnER2Hk4zNKNextpQGMi0Xxo1LnnPhX+3Cg4NeyAOTD4/qETFbd8me0nnsGrp8ezAty7D8V/8T88OpcEA=");
+                "ASIA5PS32JF66C5FU5PG",
+                "M2pi4ntusI6/VeQDPba4eYs48dfz0ibhKWfyTdn6",
+                "FwoGZXIvYXdzEMf//////////wEaDCCmAyJY6tFETOLeiiLFAUqcnggUUwfYkD14FNqywQOQ1VRupNrFD8jiwcGcs5gpHlcVfpZra+mhtN15L3WJ2LJpAJ2jheQO2e2CoyFuPfd8c/T8+f/eoNJyDfcWadY285mtcQ+EdIVpTT11swGdtKlK2cxlZhig17dGaE8arogQSP8Df9EDXUbxzEk/1SHq7hSWThv00aWwgS2OI/QCqG/M0PQsYXdsbXJL6C7JHTPvK91dsOMW51QonuGjn2P4Qpybg/VJ9XE9X316qOscVDMEvNBCKM+nvJQGMi2dqO2iuT/rWHWZmdFtcdM5MS4x7GqmIxO44WPspB2z5UWuMDNHytz21NnLIbw=");
         }
     }
 }
